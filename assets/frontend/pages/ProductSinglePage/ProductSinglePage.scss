@@ -50,7 +50,7 @@
             }
 
             &:hover {
-              border-color: $clr-orange;
+              border-color: $clr-greenecomarket;
               img {
                 transform: scale(0.9);
               }
@@ -113,7 +113,7 @@
           .btn {
             height: 46px;
             font-size: 15px;
-            border: 1px solid $clr-orange;
+            border: 1px solid $clr-greenecomarket;
             padding: 0 1.8rem;
             transition: $transition-ease;
 
@@ -122,10 +122,10 @@
             }
             &:first-child {
               background-color: #ffeee8;
-              color: $clr-orange;
+              color: $clr-greenecomarket;
             }
             &:last-child {
-              background-color: $clr-orange;
+              background-color: $clr-greenecomarket;
               color: white;
             }
             &:hover {

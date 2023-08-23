@@ -45,7 +45,7 @@ const LoginPage = () => {
       <div className="container">
         <div className="register-form-content">
           <div className="title-md">
-            <h3>Create an Account</h3>
+            <h3> Log In ------ </h3>
           </div>
           <form className="registration-form" onSubmit={handleSubmit}>
             <div className="form-group">
