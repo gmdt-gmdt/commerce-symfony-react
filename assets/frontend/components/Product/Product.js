@@ -5,6 +5,8 @@ import { formatPrice } from "../../utils/helpers";
 import "./Product.scss";
 
 const Product = ({ product }) => {
+  const ratingColor = "#32a852";
+
   return (
     <Link to={`/product/${product?.id}`} key={product?.id}>
       <div className="product-item bg-white">
@@ -28,11 +30,16 @@ const Product = ({ product }) => {
               {formatPrice(product?.discountedPrice)}
             </span>
             <span className="discount fw-6">
-              ({product?.discountedPercentage}% Off)
+              ({product?.discountPercentage}%Off)
             </span>
           </div>
 
-          <Rating name="simple-controlled" value={product.rating} />
+          <Rating
+            name="simple-controlled"
+            value={product.rating}
+            readOnly
+            style={{ color: ratingColor }}
+          />
         </div>
       </div>
     </Link>

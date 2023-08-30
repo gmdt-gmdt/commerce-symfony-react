@@ -1,5 +1,11 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+catch_all:
+  path: /{reactRouting}
+  controller: App\Controller\HomeController::index
+  requirements:
+    reactRouting: "^(?!api|_(profiler|wdt)).*"
