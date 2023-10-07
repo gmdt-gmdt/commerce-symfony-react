@@ -24,6 +24,8 @@ symfony serve to run app
   - create category
   - create user ()???
 
+# refresh - page not found
+
 The error message "No route found for 'GET http://127.0.0.1:8000/category/laptops'" typically indicates that Symfony's routing system couldn't find a route that matches the provided URL. This could happen for a variety of reasons, but let's focus on the scenario of refreshing a specific category page in your ReactJS frontend.
 
 When you're using ReactJS for frontend routing (using tools like React Router), direct page refreshes can cause issues because the frontend routing relies on JavaScript to handle navigation. When you refresh the page, the browser sends a direct request to the server for the URL, and Symfony's routing system might not recognize the URL as a valid route because it's being handled on the frontend.
@@ -78,3 +80,22 @@ To resolve this issue and enable proper handling of page refreshes for your Reac
    For instance, if you're using React Router, you'd set up routes within your React components to match the expected paths and render the appropriate components.
 
 With these changes, when you refresh a category page URL (e.g., `http://127.0.0.1:8000/category/laptops`), Symfony's routing will capture the URL and redirect it to your ReactController, which then serves your ReactJS app's entry point. Your ReactJS app will handle the routing internally using React Router and display the correct category page.
+
+# Deployment
+
+- npm run build in root app
+
+cd domains/votre_domaine/public_html
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+php composer.phar update
+php composer.phar require symfony/apache-pack
+
+- composer require symfony/apache-pack
+- install rsync
+- copy folder to server : scp commerce-symfony-react.zip mtraore@141.94.250.61:~/
+- unzip that (chmod +r commerce-symfony-react.zip, unzip ~/commerce-symfony-react.zip)

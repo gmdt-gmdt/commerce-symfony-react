@@ -52,6 +52,11 @@ class Category
         return $this->products;
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?? 'Category (ID: ' . $this->getId() . ')';
+    }
+
     public function addProduct(Product $product): static
     {
         if (!$this->products->contains($product)) {

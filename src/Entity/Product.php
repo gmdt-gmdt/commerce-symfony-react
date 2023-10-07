@@ -37,9 +37,10 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $brand = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products', cascade: ['persist'])]
+    #[ORM\ManyToOne(inversedBy: 'products', targetEntity: Category::class, cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductImage::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $image;
@@ -50,6 +51,11 @@ class Product
     public function __construct()
     {
         $this->image = new ArrayCollection();
+    }
+  
+    public function __toString()
+    {
+        return $this->getTitle() ?? 'Product (ID: ' . $this->getId() . ')';
     }
 
     public function getId(): ?int

@@ -41,6 +41,11 @@ class ProductImage
     {
         return $this->product;
     }
+    public function __toString()
+    {
+        return $this->getUrl() ?? 'ProductImage (ID: ' . $this->getId() . ')';
+    }
+
 
     public function setProduct(?Product $product): static
     {
